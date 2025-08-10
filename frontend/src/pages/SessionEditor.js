@@ -31,7 +31,7 @@ export default function SessionEditor() {
       setLoading(true);
       try {
         const res = await fetch(
-          `http://localhost:8000/sessions/my-sessions/${sessionIdFromUrl}`,
+          `${process.env.REACT_APP_API_URL}/sessions/my-sessions/${sessionIdFromUrl}`,
           {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -84,7 +84,7 @@ export default function SessionEditor() {
         }
 
         const res = await fetch(
-          "http://localhost:8000/sessions/my-sessions/save-draft",
+          `${process.env.REACT_APP_API_URL}/sessions/my-sessions/save-draft`,
           {
             method: "POST",
             headers: {
@@ -133,7 +133,7 @@ export default function SessionEditor() {
       if (draftId) bodyPayload.id = draftId;
 
       const res = await fetch(
-        "http://localhost:8000/sessions/my-sessions/save-draft",
+        `${process.env.REACT_APP_API_URL}/sessions/my-sessions/save-draft`,
         {
           method: "POST",
           headers: {
@@ -179,7 +179,7 @@ export default function SessionEditor() {
       if (draftId) draftPayload.id = draftId;
 
       const draftRes = await fetch(
-        "http://localhost:8000/sessions/my-sessions/save-draft",
+        `${process.env.REACT_APP_API_URL}/sessions/my-sessions/save-draft`,
         {
           method: "POST",
           headers: {
@@ -194,7 +194,7 @@ export default function SessionEditor() {
 
       if (draftRes.ok && draftData._id) {
         const publishRes = await fetch(
-          "http://localhost:8000/sessions/my-sessions/publish",
+          `${process.env.REACT_APP_API_URL}/sessions/my-sessions/publish`,
           {
             method: "POST",
             headers: {

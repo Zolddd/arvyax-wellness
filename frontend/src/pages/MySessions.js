@@ -25,7 +25,7 @@ const MySessions = () => {
   const fetchSessions = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await fetch("http://localhost:8000/sessions/my-sessions", {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/sessions/my-sessions`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await res.json();
@@ -44,7 +44,7 @@ const MySessions = () => {
   // Delete Session
   const deleteSession = async (id) => {
     try {
-      const res = await fetch(`http://localhost:8000/sessions/my-sessions/${id}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/sessions/my-sessions/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -66,7 +66,7 @@ const MySessions = () => {
   // Publish Draft 
   const publishSession = async (id) => {
     try {
-      const res = await fetch("http://localhost:8000/sessions/my-sessions/publish", {
+      const res = await fetch("${process.env.REACT_APP_API_URL}/sessions/my-sessions/publish", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -105,7 +105,7 @@ const MySessions = () => {
         json_file_url: editJsonUrl,
       };
 
-      const res = await fetch("http://localhost:8000/sessions/my-sessions/save-draft", {
+      const res = await fetch("${process.env.REACT_APP_API_URL}/sessions/my-sessions/save-draft", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

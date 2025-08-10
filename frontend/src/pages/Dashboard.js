@@ -46,7 +46,7 @@ const Dashboard = () => {
   // Fetch sessions
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:8000/sessions")
+    fetch(`${process.env.REACT_APP_API_URL}/sessions`)
       .then((res) => res.json())
       .then((data) => {
         setSessions(data);

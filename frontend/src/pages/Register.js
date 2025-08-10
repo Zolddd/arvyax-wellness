@@ -9,7 +9,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [message, setMessage] = useState("");
-  const [messageType, setMessageType] = useState(""); // success or error
+  const [messageType, setMessageType] = useState("");
   const navigate = useNavigate();
 
   const triggerShake = () => {
@@ -44,7 +44,7 @@ export default function Register() {
     }
 
     try {
-      await axios.post("http://localhost:8000/auth/register", {
+      await axios.post(`${process.env.REACT_APP_API_URL}/auth/register`, {
         name,
         email,
         password,
